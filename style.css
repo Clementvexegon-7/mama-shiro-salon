@@ -1458,3 +1458,25 @@ a:focus-visible {
   body { background: #fff; color: #000; font-size: 12pt; }
   .service-card { break-inside: avoid; }
 }
+
+/* Fix mobile navbar padding and spacing when expanded */
+@media (max-width: 991px) {
+  .navbar-collapse {
+    background-color: var(--bg-nav);
+    padding: var(--space-md);
+    border-radius: var(--radius-md);
+    margin-top: var(--space-sm);
+    border: 1px solid var(--clr-gold);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .navbar-nav {
+    gap: var(--space-xs);
+    align-items: flex-start !important;
+  }
+  
+  .lang-switcher,
+  .theme-toggle-label {
+    margin-top: var(--space-sm);
+  }
+}
