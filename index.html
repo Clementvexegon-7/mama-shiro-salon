@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <!-- ============================================================
+       META & PERFORMANCE — Critical for slow 3G connections
+       ============================================================ -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+        content="Mama Shiro's Salon & Kinyozi — Professional haircare, braiding,
+                 and barber services in Wachina, Karatina. Open 7 days a week." />
+  <meta name="theme-color" content="#2c1810" />
+
+  <!-- Open Graph (WhatsApp link previews) -->
+  <meta property="og:title"        content="Mama Shiro's Salon & Kinyozi" />
+  <meta property="og:description"  content="35+ years of skill. Wachina's finest salon." />
+  <meta property="og:type"         content="website" />
+
+  <title>Mama Shiro's Salon & Kinyozi | Wachina, Karatina</title>
+
+  <!-- ============================================================
+       FAVICON — Emoji favicon (zero extra HTTP request)
+       ============================================================ -->
+  <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'
+        viewBox='0 0 100 100'><text y='.9em' font-size='90'>✂️</text></svg>" />
+
+  <!-- ============================================================
+       FONTS — Preconnect first, then load (performance best practice)
+       Playfair Display = headers (legible, elegant, NOT cursive)
+       Inter = body (maximum readability for older eyes)
+       ============================================================ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;600;700;800&display=swap"
+        rel="stylesheet" />
+
+  <!-- ============================================================
+       BOOTSTRAP 5 — Grid & utility classes only
+       ============================================================ -->
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+        crossorigin="anonymous" />
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+  <!-- Our custom stylesheet — loaded LAST so it overrides Bootstrap -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- ============================================================
+       PARTICLE CANVAS — Sits behind everything (z-index: -1)
+       Lightweight vanilla JS particles (NO library needed)
+       ============================================================ -->
+  <canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+  <!-- ============================================================
+       SKIP LINK — Accessibility: lets screen-reader users skip nav
+       ============================================================ -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ============================================================
+       NAVIGATION BAR
+       ============================================================ -->
+  <nav class="navbar navbar-expand-lg sticky-top" id="main-nav" role="navigation"
+       aria-label="Main navigation">
+    <div class="container">
+
+      <!-- Brand -->
+      <a class="navbar-brand d-flex align-items-center gap-2" href="#hero">
+        <span class="brand-scissors" aria-hidden="true">✂️</span>
+        <span class="brand-text">Mama Shiro's</span>
+      </a>
+
+      <!-- Hamburger -->
+      <button class="navbar-toggler" type="button"
+              data-bs-toggle="collapse" data-bs-target="#navMenu"
+              aria-controls="navMenu" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <i class="bi bi-list fs-3"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+          <li class="nav-item">
+            <a class="nav-link" href="#services"
+               data-en="Services" data-sw="Huduma" data-ki="Ũtũngati">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about"
+               data-en="About" data-sw="Kuhusu" data-ki="Ũhoro">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#gallery"
+               data-en="Gallery" data-sw="Picha" data-ki="Maũndũ">Gallery</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact"
+               data-en="Contact" data-sw="Wasiliana" data-ki="Ũrũgamano">Contact</a>
+          </li>
+
+          <!-- ── LANGUAGE SWITCHER ── -->
+          <li class="nav-item">
+            <div class="lang-switcher" role="group" aria-label="Language selector">
+              <button class="lang-btn active" data-lang="en"
+                      aria-pressed="true" aria-label="Switch to English">EN</button>
+              <button class="lang-btn" data-lang="sw"
+                      aria-pressed="false" aria-label="Badili Kiswahili">SW</button>
+              <button class="lang-btn" data-lang="ki"
+                      aria-pressed="false" aria-label="Gũthuuriria Gĩkũyũ">KI</button>
+            </div>
+          </li>
+
+          <!-- ── THEME TOGGLE (Uiverse-inspired) ── -->
+          <li class="nav-item d-flex align-items-center">
+            <label class="theme-toggle-label" for="themeToggle"
+                   title="Toggle dark/light mode"
+                   aria-label="Toggle dark or light mode">
+              <input type="checkbox" id="themeToggle" role="switch"
+                     aria-checked="false" />
+              <span class="theme-track">
+                <span class="theme-thumb">
+                  <i class="bi bi-sun-fill sun-icon"></i>
+                  <i class="bi bi-moon-stars-fill moon-icon"></i>
+                </span>
+              </span>
+            </label>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       MAIN CONTENT
+       ============================================================ -->
+  <main id="main-content">
+
+    <!-- ══════════════════════════════════════════════════════════
+         SECTION 1 — HERO
+         ══════════════════════════════════════════════════════════ -->
+    <section id="hero" class="hero-section" aria-labelledby="hero-headline">
+
+      <!-- Animated gradient overlay -->
+      <div class="hero-overlay" aria-hidden="true"></div>
+
+      <div class="container hero-content text-center">
+
+        <!-- Decorative divider (medieval feel, NOT cursive text) -->
+        <div class="medieval-divider" aria-hidden="true">
+          <span class="divider-line"></span>
+          <span class="divider-gem">◆</span>
+          <span class="divider-line"></span>
+        </div>
+
+        <h1 id="hero-headline" class="hero-title"
+            data-en="Mama Shiro's Salon &amp; Kinyozi"
+            data-sw="Saluni ya Mama Shiro &amp; Kinyozi"
+            data-ki="Saluni ya Mama Shiro &amp; Kinyozi">
+          Mama Shiro's Salon &amp; Kinyozi
+        </h1>
+
+        <p class="hero-subtitle"
+           data-en="Professional Haircare, Braiding &amp; Barber Services in Wachina, Karatina."
+           data-sw="Huduma za Kitaalamu za Nywele, Kusuka na Kinyozi huko Wachina, Karatina."
+           data-ki="Ũtũngati wa Nywele, Gũsuka na Kinyozi Wachina, Karatina.">
+          Professional Haircare, Braiding &amp; Barber Services in Wachina, Karatina.
+        </p>
+
+        <!-- FAQ Banner — answers the top trust question immediately -->
+        <div class="faq-banner" role="note"
+             aria-label="Quality assurance notice">
+          <i class="bi bi-patch-check-fill faq-icon" aria-hidden="true"></i>
+          <p class="faq-text"
+             data-en="We use top-quality gels and oils to keep your hair healthy and strong. Ask Mama Shiro about her trusted products!"
+             data-sw="Tunatumia mafuta na jeli bora kukufanya nywele zako ziwe na afya. Muulize Mama Shiro kuhusu bidhaa zake!"
+             data-ki="Tũgũtumia mafuta na jeli ya bwega gũcunga nywele ciaku. Ũliza Mama Shiro mĩkaro yake!">
+            We use <strong>top-quality gels and oils</strong> to keep your hair healthy
+            and strong. Ask Mama Shiro about her trusted products!
+          </p>
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="hero-buttons d-flex flex-wrap justify-content-center gap-3">
+          <a href="tel:+254724453312"
+             class="btn-medieval btn-medieval--primary"
+             aria-label="Call Mama Shiro at +254 724 453312">
+            <i class="bi bi-telephone-fill" aria-hidden="true"></i>
+            <span data-en="Call Mama Shiro"
+                  data-sw="Piga Simu Mama Shiro"
+                  data-ki="Ithiria Mama Shiro">Call Mama Shiro</span>
+          </a>
+          <a href="https://wa.me/254724453312?text=Hello%20Mama%20Shiro!%20I%20would%20like%20to%20book%20an%20appointment."
+             target="_blank" rel="noopener noreferrer"
+             class="btn-medieval btn-medieval--whatsapp"
+             aria-label="Chat with Mama Shiro on WhatsApp">
+            <i class="bi bi-whatsapp" aria-hidden="true"></i>
+            <span data-en="Chat on WhatsApp"
+                  data-sw="Zungumza WhatsApp"
+                  data-ki="Ũrũgamano WhatsApp">Chat on WhatsApp</span>
+          </a>
+        </div>
+
+        <div class="medieval-divider mt-4" aria-hidden="true">
+          <span class="divider-line"></span>
+          <span class="divider-gem">◆</span>
+          <span class="divider-line"></span>
+        </div>
+
+      </div><!-- /hero-content -->
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         SECTION 2 — SERVICES & PRICE LIST
+         ══════════════════════════════════════════════════════════ -->
+    <section id="services" class="section-padded" aria-labelledby="services-heading">
+      <div class="container">
+
+        <div class="section-header text-center">
+          <h2 class="section-title"
+              id="services-heading"
+              data-en="Our Services &amp; Prices"
+              data-sw="Huduma Zetu &amp; Bei"
+              data-ki="Ũtũngati Wetũ &amp; Thogora">
+            Our Services &amp; Prices
+          </h2>
+          <p class="section-subtitle"
+             data-en="All prices in Kenyan Shillings (Ksh)"
+             data-sw="Bei zote ni Shilingi za Kenya (Ksh)"
+             data-ki="Thogora yothe nĩ ya Shilingi cia Kenya (Ksh)">
+            All prices in Kenyan Shillings (Ksh)
+          </p>
+          <div class="medieval-divider" aria-hidden="true">
+            <span class="divider-line"></span>
+            <span class="divider-gem">◆</span>
+            <span class="divider-line"></span>
+          </div>
+        </div>
+
+        <div class="row g-4 mt-2">
+
+          <!-- ── WASH & TREATMENTS ── -->
+          <div class="col-12 col-md-6 col-lg-6">
+            <div class="service-card">
+              <div class="service-card__header">
+                <i class="bi bi-droplet-fill service-card__icon" aria-hidden="true"></i>
+                <h3 class="service-card__title"
+                    data-en="Wash &amp; Treatments"
+                    data-sw="Osha &amp; Matibabu"
+                    data-ki="Gũsamba &amp; Matibabu">
+                  Wash &amp; Treatments
+                </h3>
+              </div>
+              <ul class="service-list" role="list">
+                <li class="service-item">
+                  <span class="service-name"
+                        data-en="Blow-dry &amp; Wash"
+                        data-sw="Osha na Kausha"
+                        data-ki="Gũsamba na Gũkausha">Blow-dry &amp; Wash</span>
+                  <span class="service-badge service-badge--popular"
+                        data-en="Most Popular!"
+                        data-sw="Inayopendwa Sana!"
+                        data-ki="Ĩnombaga Mũno!">Most Popular!</span>
+                  <span class="service-price">200 Ksh</span>
+                </li>
+                <li class="service-item">
+                  <span class="service-name"
+                        data-en="Palming (Perms/Chemicals)"
+                        data-sw="Palming (Perm/Kemikali)"
+                        data-ki="Palming (Kemikari)">Palming (Perms/Chemicals)</span>
+                  <span class="service-price">1,000 Ksh</span>
+                </li>
+                <li class="service-item">
+                  <span class="service-name"
+                        data-en="Styling Gel"
+                        data-sw="Jeli ya Mtindo"
+                        data-ki="Jeli ya Nywele">Styling Gel</span>
+                  <span class="service-price service-price--ask"
+                        data-en="Ask for Pricing"
+                        data-sw="Uliza Bei"
+                        data-ki="Ũliza Thogora">Ask for Pricing</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- ── PLAITING & BRAIDING ── -->
+          <div class="col-12 col-md-6 col-lg-6">
+            <div class="service-card">
+              <div class="service-card__header">
+                <i class="bi bi-bezier2 service-card__icon" aria-hidden="true"></i>
+                <h3 class="service-card__title"
+                    data-en="Plaiting &amp; Braiding"
+                    data-sw="Kusuka na Kutengeneza Nywele"
+                    data-ki="Gũsuka na Gũkũnja Nywele">
+                  Plaiting &amp; Braiding
+                </h3>
+              </div>
+              <ul class="service-list" role="list">
+                <li class="service-item">
+                  <span class="service-name"
+                        data-en="Lines"
+                        data-sw="Mistari"
+                        data-ki="Mistari">Lines</span>
+                  <span class="service-badge service-badge--school"
+                        data-en="Back-to-School!"
+                        data-sw="Rudi Shule!"
+                        data-ki="Ũkĩrĩra Kũrĩra!">Back-to-School!</span>
+                  <span class="service-price">200 Ksh</span>
+                </li>
+                <li class="service-item">
+                  <span class="service-name"
+                        data-en="Twist"
+                        data-sw="Twist"
+                        data-ki="Twist">Twist</span>
+                  <span class="service-price">1,000 Ksh</span>
+                </li>
+                <li class="service-item">
+                  <span class="service-name"
+                        data-en="Rasta"
+                        data-sw="Rasta"
+                        data-ki="Rasta">Rasta</span>
+                  <span class="service-price">150 Ksh <small>/pc</small></span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- ── WEAVES & CLASSIC STYLES ── -->
+          <div class="col-12 col-md-6 col-lg-6">
+            <div class="service-card service-card--featured">
+              <div class="service-card__header">
+                <i class="bi bi-stars service-card__icon" aria-hidden="true"></i>
+                <h3 class="service-card__title"
+                    data-en="Weaves &amp; Classic Styles"
+                    data-sw="Weave na Mitindo ya Jadi"
+                    data-ki="Weave na Ũciaro wa Kahinda">
+                  Weaves &amp; Classic Styles
+                </h3>
+              </div>
+              <ul class="service-list" role="list">
+                <li class="service-item">
+                  <span class="service-name"
+                        data-en="Weaving"
+                        data-sw="Weaving"
+                        data-ki="Weaving">Weaving</span>
+                  <span class="service-price">300 Ksh</span>
+                </li>
+                <li class="service-item">
+                  <span class="service-name"
+                        data-en="Bandika"
+                        data-sw="Bandika"
+                        data-ki="Bandika">Bandika</span>
+                  <span class="service-price">300 Ksh</span>
+                </li>
+                <li class="service-item">
+                  <span class="service-name"
+                        data-en="Mwongezo"
+                        data-sw="Mwongezo"
+                        data-ki="Mwongezo">Mwongezo</span>
+                  <span class="service-price">500 Ksh</span>
+                </li>
+                <li class="service-item">
+                  <span class="service-name"
+                        data-en="Bob"
+                        data-sw="Bob"
+                        data-ki="Bob">Bob</span>
+                  <span class="service-price">500 Ksh</span>
+                </li>
+                <li class="service-item">
+                  <span class="service-name"
+                        data-en="Pussycat"
+                        data-sw="Pussycat"
+                        data-ki="Pussycat">Pussycat</span>
+                  <span class="service-price">250 Ksh</span>
+                </li>
+                <li class="service-item service-item--signature">
+                  <span class="service-name"
+                        data-en="Ethiopianth"
+                        data-sw="Ethiopianth"
+                        data-ki="Ethiopianth">Ethiopianth</span>
+                  <span class="service-badge service-badge--signature"
+                        data-en="✦ Signature Style"
+                        data-sw="✦ Mtindo Maalum"
+                        data-ki="✦ Ũciaro wa Mama">✦ Signature Style</span>
+                  <span class="service-price service-price--gold">800 Ksh</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- ── KINYOZI (BARBER) ── -->
+          <div class="col-12 col-md-6 col-lg-6">
+            <div class="service-card">
+              <div class="service-card__header">
+                <i class="bi bi-scissors service-card__icon" aria-hidden="true"></i>
+                <h3 class="service-card__title"
+                    data-en="Kinyozi (Barber)"
+                    data-sw="Kinyozi (Mpigaji Nywele)"
+                    data-ki="Kinyozi (Mũcinjiri)">
+                  Kinyozi (Barber)
+                </h3>
+              </div>
+              <ul class="service-list" role="list">
+                <li class="service-item">
+                  <span class="service-name"
+                        data-en="Children's Haircut"
+                        data-sw="Kunyoa Watoto"
+                        data-ki="Gũcinja Nywele cia Ciana">Children's Haircut</span>
+                  <span class="service-price">30 Ksh</span>
+                </li>
+                <li class="service-item">
+                  <span class="service-name"
+                        data-en="Adults' Haircut"
+                        data-sw="Kunyoa Watu Wazima"
+                        data-ki="Gũcinja Nywele cia Aandu">Adults' Haircut</span>
+                  <span class="service-price">50 Ksh</span>
+                </li>
+              </ul>
+
+              <!-- Kinyozi note -->
+              <p class="service-card__note"
+                 data-en="Quick, clean cuts for the whole family. No appointment needed!"
+                 data-sw="Kukata haraka na usafi kwa familia yote. Hakuna haja ya miadi!"
+                 data-ki="Gũcinja gũkũ na gũtheru gũkũ familia yothe. Tũgaakĩhũthũra!">
+                Quick, clean cuts for the whole family. No appointment needed!
+              </p>
+            </div>
+          </div>
+
+        </div><!-- /row -->
+      </div><!-- /container -->
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         SECTION 3 — MEET MAMA SHIRO
+         ══════════════════════════════════════════════════════════ -->
+    <section id="about" class="section-padded section-alt"
+             aria-labelledby="about-heading">
+      <div class="container">
+
+        <div class="section-header text-center">
+          <h2 class="section-title"
+              id="about-heading"
+              data-en="Meet Mama Shiro"
+              data-sw="Mkutane na Mama Shiro"
+              data-ki="Ũhũrũke na Mama Shiro">
+            Meet Mama Shiro
+          </h2>
+          <div class="medieval-divider" aria-hidden="true">
+            <span class="divider-line"></span>
+            <span class="divider-gem">◆</span>
+            <span class="divider-line"></span>
+          </div>
+        </div>
+
+        <div class="row align-items-center g-5 mt-2">
+
+          <!-- Avatar / Photo placeholder -->
+          <div class="col-12 col-md-5 text-center">
+            <div class="mama-avatar-wrap">
+              <div class="mama-avatar" aria-label="Photo of Mama Shiro">
+                <span class="mama-avatar__emoji" aria-hidden="true">👩🏾</span>
+                <span class="mama-avatar__years">35+<br><small>Years</small></span>
+              </div>
+              <div class="mama-avatar__badge"
+                   data-en="Est. Since ~1989"
+                   data-sw="Kuanzishwa ~1989"
+                   data-ki="Kwambĩrĩria ~1989">Est. Since ~1989</div>
+            </div>
+          </div>
+
+          <!-- Bio text -->
+          <div class="col-12 col-md-7">
+            <div class="mama-bio">
+              <p class="mama-bio__text"
+                 data-en="For over 35 years, Mama Shiro has been perfecting hair and keeping the Gwachina community looking beautiful. From classic styles like Bandika to her absolute favourite — the Ethiopianth — she brings decades of skill and genuine care to every single customer."
+                 data-sw="Kwa zaidi ya miaka 35, Mama Shiro amekuwa akifanya nywele vizuri na kuweka jamii ya Gwachina ikiwa na uzuri. Kuanzia mitindo ya zamani kama Bandika hadi kipendwa chake — Ethiopianth — analeta ustadi wa miongo na upendo wa kweli kwa kila mteja."
+                 data-ki="Mũingĩ wa mĩaka 35, Mama Shiro nĩ arĩ akĩhinga nywele na gũcuha andũ a Gwachina ũrembe. Kuuma mitindo ya kahinda ta Bandika nginya ĩrĩa ĩnombaga mũno — Ethiopianth — arehaga ũũgi wa mĩaka na ũndũ wa ngoro kũrĩ mũhĩtia o wothe.">
+                For over <strong>35 years</strong>, Mama Shiro has been perfecting hair
+                and keeping the Gwachina community looking beautiful. From classic styles
+                like Bandika to her absolute favourite — the
+                <strong>Ethiopianth</strong> — she brings decades of skill and genuine
+                care to every single customer.
+              </p>
+              <p class="mama-bio__text"
+                 data-en="Whether you are a student getting Lines for back-to-school, or a youth looking for a fresh new style — you are always welcome in Mama Shiro's chair."
+                 data-sw="Kama wewe ni mwanafunzi unaohitaji Lines kabla ya shule, au kijana anayetafuta mtindo mpya — karibu sana kwenye kiti cha Mama Shiro."
+                 data-ki="Hingo ũrĩ mũrĩa ũhakĩrĩte Lines mbere ya kũrĩra, kana ũhĩtia mtindo mwerũ — nĩ ũkaaribu kĩhĩ kĩa Mama Shiro.">
+                Whether you are a student getting <strong>Lines</strong> for back-to-school,
+                or a youth looking for a fresh new style — you are always welcome in
+                <strong>Mama Shiro's chair.</strong>
+              </p>
+
+              <!-- Trust badges -->
+              <div class="trust-badges d-flex flex-wrap gap-3 mt-4">
+                <div class="trust-badge">
+                  <i class="bi bi-award-fill" aria-hidden="true"></i>
+                  <span data-en="35+ Years Experience"
+                        data-sw="Uzoefu wa Miaka 35+"
+                        data-ki="Ũũgi wa Mĩaka 35+">35+ Years Experience</span>
+                </div>
+                <div class="trust-badge">
+                  <i class="bi bi-people-fill" aria-hidden="true"></i>
+                  <span data-en="Community Favourite"
+                        data-sw="Kipenzi cha Jamii"
+                        data-ki="Mũhĩtia wa Ũciũmbi">Community Favourite</span>
+                </div>
+                <div class="trust-badge">
+                  <i class="bi bi-heart-fill" aria-hidden="true"></i>
+                  <span data-en="Signature: Ethiopianth"
+                        data-sw="Mtindo Maalum: Ethiopianth"
+                        data-ki="Ũciaro: Ethiopianth">Signature: Ethiopianth</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /row -->
+      </div><!-- /container -->
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         SECTION 4 — PHOTO & VIDEO GALLERY
+         ══════════════════════════════════════════════════════════ -->
+    <section id="gallery" class="section-padded"
+             aria-labelledby="gallery-heading">
+      <div class="container">
+
+        <div class="section-header text-center">
+          <h2 class="section-title"
+              id="gallery-heading"
+              data-en="Gallery &amp; Our Work"
+              data-sw="Picha na Kazi Yetu"
+              data-ki="Maũndũ na Ũrĩmi Wetũ">
+            Gallery &amp; Our Work
+          </h2>
+          <div class="medieval-divider" aria-hidden="true">
+            <span class="divider-line"></span>
+            <span class="divider-gem">◆</span>
+            <span class="divider-line"></span>
+          </div>
+        </div>
+
+        <!-- Photo Grid -->
+        <div class="gallery-grid mt-4" role="list"
+             aria-label="Work photos from Mama Shiro's Salon">
+
+          <!-- Photo placeholders — replace src with real images -->
+          <div class="gallery-item" role="listitem">
+            <div class="gallery-placeholder" aria-label="Salon work photo 1">
+              <i class="bi bi-camera2" aria-hidden="true"></i>
+              <span data-en="Ethiopianth Style"
+                    data-sw="Mtindo wa Ethiopianth"
+                    data-ki="Ũciaro wa Ethiopianth">Ethiopianth Style</span>
+            </div>
+          </div>
+          <div class="gallery-item" role="listitem">
+            <div class="gallery-placeholder" aria-label="Salon work photo 2">
+              <i class="bi bi-camera2" aria-hidden="true"></i>
+              <span data-en="Braiding &amp; Lines"
+                    data-sw="Kusuka na Mistari"
+                    data-ki="Gũsuka na Mistari">Braiding &amp; Lines</span>
+            </div>
+          </div>
+          <div class="gallery-item" role="listitem">
+            <div class="gallery-placeholder" aria-label="Salon work photo 3">
+              <i class="bi bi-camera2" aria-hidden="true"></i>
+              <span data-en="Weave &amp; Bob"
+                    data-sw="Weave na Bob"
+                    data-ki="Weave na Bob">Weave &amp; Bob</span>
+            </div>
+          </div>
+          <div class="gallery-item" role="listitem">
+            <div class="gallery-placeholder" aria-label="Salon work photo 4">
+              <i class="bi bi-camera2" aria-hidden="true"></i>
+              <span data-en="Twist &amp; Rasta"
+                    data-sw="Twist na Rasta"
+                    data-ki="Twist na Rasta">Twist &amp; Rasta</span>
+            </div>
+          </div>
+          <div class="gallery-item" role="listitem">
+            <div class="gallery-placeholder" aria-label="Salon work photo 5">
+              <i class="bi bi-camera2" aria-hidden="true"></i>
+              <span data-en="Kinyozi Cuts"
+                    data-sw="Kukata Kinyozi"
+                    data-ki="Gũcinja Kinyozi">Kinyozi Cuts</span>
+            </div>
+          </div>
+          <div class="gallery-item" role="listitem">
+            <div class="gallery-placeholder" aria-label="Salon work photo 6">
+              <i class="bi bi-camera2" aria-hidden="true"></i>
+              <span data-en="Bandika Classic"
+                    data-sw="Bandika ya Zamani"
+                    data-ki="Bandika ya Kahinda">Bandika Classic</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video Grid — placeholders for future Facebook/TikTok embeds -->
+        <h3 class="gallery-subtitle mt-5 text-center"
+            data-en="Video Reels (Coming Soon)"
+            data-sw="Video (Zinakuja Hivi Karibuni)"
+            data-ki="Video (Ikũũka Hĩndĩ Ndeithia)">
+          Video Reels (Coming Soon)
+        </h3>
+
+        <div class="video-grid mt-3" role="list"
+             aria-label="Video placeholders for future Facebook and TikTok reels">
+          <div class="video-placeholder" role="listitem">
+            <i class="bi bi-play-circle-fill" aria-hidden="true"></i>
+            <span data-en="Facebook Reel"
+                  data-sw="Reel ya Facebook"
+                  data-ki="Reel ya Facebook">Facebook Reel</span>
+            <small data-en="(Coming Soon)"
+                   data-sw="(Inakuja)"
+                   data-ki="(Ikũũka)">(Coming Soon)</small>
+          </div>
+          <div class="video-placeholder" role="listitem">
+            <i class="bi bi-play-circle-fill" aria-hidden="true"></i>
+            <span data-en="TikTok Reel"
+                  data-sw="Reel ya TikTok"
+                  data-ki="Reel ya TikTok">TikTok Reel</span>
+            <small data-en="(Coming Soon)"
+                   data-sw="(Inakuja)"
+                   data-ki="(Ikũũka)">(Coming Soon)</small>
+          </div>
+          <div class="video-placeholder" role="listitem">
+            <i class="bi bi-play-circle-fill" aria-hidden="true"></i>
+            <span data-en="Style Tutorial"
+                  data-sw="Jinsi ya Kufanya Mitindo"
+                  data-ki="Ũhoro wa Mitindo">Style Tutorial</span>
+            <small data-en="(Coming Soon)"
+                   data-sw="(Inakuja)"
+                   data-ki="(Ikũũka)">(Coming Soon)</small>
+          </div>
+        </div>
+
+      </div><!-- /container -->
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         SECTION 5 — CONTACT / LOCATION
+         ══════════════════════════════════════════════════════════ -->
+    <section id="contact" class="section-padded section-alt"
+             aria-labelledby="contact-heading">
+      <div class="container">
+
+        <div class="section-header text-center">
+          <h2 class="section-title"
+              id="contact-heading"
+              data-en="Find Us &amp; Get in Touch"
+              data-sw="Tupate na Wasiliana Nasi"
+              data-ki="Tũhũrũke na Ũrũgamano Wetũ">
+            Find Us &amp; Get in Touch
+          </h2>
+          <div class="medieval-divider" aria-hidden="true">
+            <span class="divider-line"></span>
+            <span class="divider-gem">◆</span>
+            <span class="divider-line"></span>
+          </div>
+        </div>
+
+        <div class="row g-4 mt-2">
+
+          <!-- Location & Hours card -->
+          <div class="col-12 col-md-6">
+            <div class="contact-card">
+              <h3 class="contact-card__title"
+                  data-en="Location &amp; Hours"
+                  data-sw="Mahali &amp; Masaa"
+                  data-ki="Mahali &amp; Nthaa">
+                <i class="bi bi-geo-alt-fill" aria-hidden="true"></i>
+                Location &amp; Hours
+              </h3>
+              <ul class="contact-list" role="list">
+                <li>
+                  <i class="bi bi-pin-map-fill" aria-hidden="true"></i>
+                  <span data-en="Gwachina, near Gachuero &amp; General China Secondary School, Karatina."
+                        data-sw="Gwachina, karibu na Gachuero &amp; Shule ya Sekondari ya General China, Karatina."
+                        data-ki="Gwachina, hakuhĩ na Gachuero &amp; General China Secondary School, Karatina.">
+                    Gwachina, near Gachuero &amp; General China Secondary School, Karatina.
+                  </span>
+                </li>
+                <li>
+                  <i class="bi bi-clock-fill" aria-hidden="true"></i>
+                  <span data-en="Open Monday – Sunday: 11:00 AM – 7:00 PM. Every day, no days off!"
+                        data-sw="Wazi Jumatatu – Jumapili: 11:00 AM – 7:00 PM. Kila siku, hakuna likizo!"
+                        data-ki="Nguo Ĩtambĩrĩra – Ĩtandũkũrũka: 11:00 AM – 7:00 PM. Mũthenya wothe!">
+                    Open <strong>Monday – Sunday: 11:00 AM – 7:00 PM.</strong>
+                    Every day, no days off!
+                  </span>
+                </li>
+                <li>
+                  <i class="bi bi-cash-coin" aria-hidden="true"></i>
+                  <span data-en="Payment: Cash or M-Pesa (Send to 0724 453312)"
+                        data-sw="Malipo: Pesa Taslimu au M-Pesa (Tuma kwa 0724 453312)"
+                        data-ki="Mbogo: Cash kana M-Pesa (Tũma kũrĩ 0724 453312)">
+                    Payment: <strong>Cash or M-Pesa</strong>
+                    <br />Send M-Pesa to: <strong>0724 453312</strong>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Contact channels card -->
+          <div class="col-12 col-md-6">
+            <div class="contact-card">
+              <h3 class="contact-card__title"
+                  data-en="Contact Channels"
+                  data-sw="Njia za Mawasiliano"
+                  data-ki="Njira cia Ũrũgamano">
+                <i class="bi bi-chat-dots-fill" aria-hidden="true"></i>
+                Contact Channels
+              </h3>
+              <ul class="contact-list" role="list">
+                <li>
+                  <i class="bi bi-telephone-fill" aria-hidden="true"></i>
+                  <a href="tel:+254724453312" class="contact-link">
+                    +254 724 453 312
+                  </a>
+                </li>
+                <li>
+                  <i class="bi bi-whatsapp" aria-hidden="true"></i>
+                  <a href="https://wa.me/254724453312" target="_blank"
+                     rel="noopener noreferrer" class="contact-link">
+                    WhatsApp Chat
+                  </a>
+                </li>
+                <li>
+                  <i class="bi bi-facebook" aria-hidden="true"></i>
+                  <a href="https://www.facebook.com/search/top?q=Mary%20Mathenge"
+                     target="_blank" rel="noopener noreferrer" class="contact-link"
+                     aria-label="Find Mary Mathenge on Facebook">
+                    Mary Mathenge (Facebook)
+                  </a>
+                </li>
+                <li>
+                  <i class="bi bi-envelope-fill" aria-hidden="true"></i>
+                  <a href="mailto:marythuguri64@gmail.com" class="contact-link">
+                    marythuguri64@gmail.com
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </div><!-- /row -->
+      </div><!-- /container -->
+    </section>
+
+  </main><!-- /main -->
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+
+      <!-- Footer brand -->
+      <div class="footer-brand text-center">
+        <span class="brand-scissors" aria-hidden="true">✂️</span>
+        <span class="footer-brand__name">Mama Shiro's Salon &amp; Kinyozi</span>
+      </div>
+
+      <p class="footer-tagline text-center"
+         data-en="Wachina's finest — for 35+ years."
+         data-sw="Bora zaidi Gwachina — kwa miaka 35+."
+         data-ki="Ũbwega mũno Gwachina — mĩaka 35+.">
+        Gwachina's finest — for 35+ years.
+      </p>
+
+      <!-- Footer links row -->
+      <div class="footer-links d-flex flex-wrap justify-content-center gap-4 mt-3">
+        <a href="tel:+254724453312" class="footer-link">
+          <i class="bi bi-telephone-fill" aria-hidden="true"></i>
+          <span data-en="Call Us" data-sw="Piga Simu" data-ki="Ithiria">Call Us</span>
+        </a>
+        <a href="https://wa.me/254724453312" target="_blank"
+           rel="noopener noreferrer" class="footer-link">
+          <i class="bi bi-whatsapp" aria-hidden="true"></i>
+          <span data-en="WhatsApp" data-sw="WhatsApp" data-ki="WhatsApp">WhatsApp</span>
+        </a>
+        <a href="https://www.facebook.com/search/top?q=Mary%20Mathenge"
+           target="_blank" rel="noopener noreferrer" class="footer-link">
+          <i class="bi bi-facebook" aria-hidden="true"></i>
+          <span data-en="Facebook" data-sw="Facebook" data-ki="Facebook">Facebook</span>
+        </a>
+        <a href="mailto:marythuguri64@gmail.com" class="footer-link">
+          <i class="bi bi-envelope-fill" aria-hidden="true"></i>
+          <span data-en="Email" data-sw="Barua Pepe" data-ki="Barua Pepe">Email</span>
+        </a>
+      </div>
+
+      <!-- Hours reminder -->
+      <p class="footer-hours text-center mt-3"
+         data-en="Open Daily: 11:00 AM – 7:00 PM | Cash &amp; M-Pesa Accepted"
+         data-sw="Wazi Kila Siku: 11:00 AM – 7:00 PM | Pesa Taslimu &amp; M-Pesa"
+         data-ki="Nguo Yothe: 11:00 AM – 7:00 PM | Cash &amp; M-Pesa">
+        Open Daily: 11:00 AM – 7:00 PM &nbsp;|&nbsp; Cash &amp; M-Pesa Accepted
+      </p>
+
+      <hr class="footer-divider" aria-hidden="true" />
+
+      <!-- ── ARCHITECT SIGNATURE ── -->
+      <div class="architect-block text-center">
+        <p class="architect-credit">
+          Architected by
+          <strong class="architect-name"
+                  tabindex="0"
+                  title="Every pixel you see was placed with intention."
+                  aria-label="Clement Wambu Gakuha — hover for a secret">
+            Clement Wambu Gakuha
+          </strong>
+        </p>
+
+        <!--
+          ╔════════════════════════════════════════════════════╗
+          ║  EASTER EGG — visible only to the curious ones    ║
+          ║  The tooltip above says what it needs to say.     ║
+          ║  The whisper below says what the tooltip can't.   ║
+          ╚════════════════════════════════════════════════════╝
+        -->
+        <p class="architect-whisper" aria-hidden="true">
+          &ldquo; One's reality is another's illusion.
+          The architect always holds the blueprint. &rdquo;
+        </p>
+
+        <p class="copyright mt-2">
+          &copy; <span id="current-year"></span>
+          Mama Shiro's Salon &amp; Kinyozi. All rights reserved.
+        </p>
+      </div>
+
+    </div><!-- /container -->
+  </footer>
+
+  <!-- ============================================================
+       FLOATING WHATSAPP BUTTON
+       Fixed position — always visible, always accessible
+       ============================================================ -->
+  <a href="https://wa.me/254724453312?text=Hello%20Mama%20Shiro!%20I%20would%20like%20to%20book%20an%20appointment."
+     class="whatsapp-float"
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label="Chat with Mama Shiro on WhatsApp">
+    <i class="bi bi-whatsapp" aria-hidden="true"></i>
+    <span class="whatsapp-float__tooltip"
+          data-en="Chat with us!"
+          data-sw="Zungumza nasi!"
+          data-ki="Ũrũgamano natũ!">Chat with us!</span>
+  </a>
+
+  <!-- ============================================================
+       SCROLL-TO-TOP BUTTON
+       ============================================================ -->
+  <button class="scroll-top-btn" id="scrollTopBtn"
+          aria-label="Scroll back to top of page"
+          title="Back to top">
+    <i class="bi bi-chevron-up" aria-hidden="true"></i>
+  </button>
+
+  <!-- ============================================================
+       SCRIPTS — Loaded at bottom for performance
+       ============================================================ -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-YvpcrYf0tY3lHB60NNkmXc4s9bIOgUxi8T/jzmOGl3d4RFBR6VmfXMzqRp8n7"
+          crossorigin="anonymous"></script>
+  <script src="script.js" defer></script>
+
+</body>
+</html>
