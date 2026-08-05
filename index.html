@@ -51,11 +51,6 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-          integrity="sha384-YvpcrYf0tY3lHB60NNkmXc4s9bIOgUxi8T/jzmOGl3d4RFBR6VmfXMzqRp8n7"
-          crossorigin="anonymous"></script>
-  <script src="script.js" defer></script>
-
 <body>
 
   <!-- ============================================================
@@ -875,7 +870,11 @@
   <!-- ============================================================
        SCRIPTS — Loaded at bottom for performance
        ============================================================ -->
- 
+ <!-- Put this at the VERY BOTTOM of index.html, right above </body> -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
 
 </body>
 </html>
